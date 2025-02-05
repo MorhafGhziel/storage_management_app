@@ -7,10 +7,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <section className="bg-brand p-10">
         <div>
           <Image
-            src="/favicon.ico"
+            src="/logo.png"
             alt="logo"
-            height={16}
-            width={16}
+            width={224}
+            height={82}
             className="h-auto "
           />
 
@@ -19,6 +19,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <p className="body-1">
               This is a place where you can store all your documents.
             </p>
+
+            <div>
+              <Image
+                src="/Illustration.png"
+                alt="Files"
+                width={342}
+                height={342}
+              />
+            </div>
           </div>
         </div>
       </section>
