@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -14,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -40,6 +43,8 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
   };
+
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <>
@@ -95,6 +100,15 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
           <Button type="submit" className="form-submit-button">
             {type === "sign-up" ? "Sign Up" : "Sign In"}
+            {isLoading && (
+              <Image
+                src="/assets/icons/loader.svg"
+                alt="loader"
+                width={24}
+                height={24}
+                className="animate-spint ml-2"
+              />
+            )}
           </Button>
         </form>
       </Form>
