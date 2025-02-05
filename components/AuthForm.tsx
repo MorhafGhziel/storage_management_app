@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,6 +22,9 @@ const formSchema = z.object({
   fullName: z.string().min(2, {
     message: "Full Name must be at least 2 characters.",
   }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
 });
 
 type FormType = "sign-in" | "sign-up";
@@ -34,6 +36,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     defaultValues: {
       username: "",
       fullName: "",
+      email: "",
     },
   });
 
@@ -49,20 +52,25 @@ const AuthForm = ({ type }: { type: FormType }) => {
           <h1 className="form-title">
             {type === "sign-in" ? "Sign In" : "Sign Up"}
           </h1>
+
+          {/* Username Field */}
           {type === "sign-in" ? (
             <FormField
               control={form.control}
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input placeholder="shadcn" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
-                  <FormMessage />
+                  <div className="shad-form-item">
+                    <FormLabel className="shad-form-label">Username</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="This is your public display name."
+                        className="shad-input"
+                        {...field}
+                      />
+                    </FormControl>
+                  </div>
+                  <FormMessage className="shad-form-message" />
                 </FormItem>
               )}
             />
@@ -87,7 +95,31 @@ const AuthForm = ({ type }: { type: FormType }) => {
               )}
             />
           )}
-          <Button type="submit">Submit</Button>
+
+          {/* Email Field */}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <div className="shad-form-item">
+                  <FormLabel className="shad-form-label">Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your email"
+                      className="shad-input"
+                      {...field}
+                    />
+                  </FormControl>
+                </div>
+                <FormMessage className="shad-form-message" />
+              </FormItem>
+            )}
+          />
+
+          <Button type="submit" className="form-submit-button">
+            {type === "sign-up" ? "Sign Up" : "Sign In"}
+          </Button>
         </form>
       </Form>
     </>
