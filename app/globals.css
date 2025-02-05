@@ -6,4 +6,7 @@
   .center {
     @apply flex h-screen justify-center items-center bg-amber-100;
   }
+  .h1 {
+    @apply text-[34px] leading-[42px] font-bold;
+  }
 }
