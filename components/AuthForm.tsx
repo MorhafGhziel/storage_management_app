@@ -47,6 +47,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleClick = () => {
+    setIsLoading(true);
+  };
+
   return (
     <>
       <Form {...form}>
@@ -99,7 +103,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
             )}
           />
 
-          <Button type="submit" className="form-submit-button">
+          <Button
+            onClick={handleClick}
+            type="submit"
+            className="form-submit-button"
+          >
             {type === "sign-up" ? "Sign Up" : "Sign In"}
             {isLoading && (
               <Image
