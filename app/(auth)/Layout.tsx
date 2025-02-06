@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen">
       <section className="hidden w-1/2 items-center justify-center bg-brand p-10 lg:flex xl:w-2/5">
@@ -11,7 +11,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
             alt="logo"
             width={224}
             height={82}
-            className="h-auto "
+            className="h-auto"
           />
 
           <div className="space-y-5 text-white">
@@ -49,4 +49,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default layout;
+export default Layout;
